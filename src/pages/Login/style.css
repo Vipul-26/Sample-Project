@@ -143,3 +143,17 @@ form .txt_field {
     color: red;
     margin-top: 0.75rem;
 }
+
+@media screen and (max-width: 1023px) {
+    .center {
+        top: 40%;
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .center {
+        top: 45%;
+        width: 350px;
+    }
+}

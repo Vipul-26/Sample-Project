@@ -217,3 +217,25 @@ select::-ms-expand {
 .select:hover::after {
     color: #23b499;
 }
+
+@media screen and (max-width: 1024px) {
+    .main-div {
+        max-width: 800px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .main-div {
+        max-width: 650px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main-div {
+        max-width: 320px;
+    }
+
+    .select {
+        width: 18em;
+    }
+}

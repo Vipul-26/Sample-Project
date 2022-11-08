@@ -7,7 +7,7 @@
     z-index: 10000;
     overflow: hidden auto;
     text-align: center;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
 
@@ -46,4 +46,16 @@
     line-height: 0;
     padding: 0;
     fill: #d2d2d2;
+}
+
+@media screen and (max-width: 1024px) {
+    .mainModal {
+        margin-top: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .mainModal {
+        width: 95%;
+    }
 }

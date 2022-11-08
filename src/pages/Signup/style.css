@@ -183,3 +183,17 @@
         opacity: 1;
     }
 }
+
+@media screen and (max-width: 1023px) {
+    .form_wrapper {
+        width: 480px;
+        margin: 20% auto 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .form_wrapper {
+        width: 350px;
+        margin: 25% auto 0;
+    }
+}
