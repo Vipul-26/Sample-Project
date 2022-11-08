@@ -5,6 +5,7 @@ body {
 .main-div {
     max-width: 1024px;
     margin: 0 auto;
+    padding-bottom: 1rem;
 }
 
 .team-div {
@@ -75,6 +76,11 @@ label {
     vertical-align: middle;
     margin-right: 0.75rem;
     margin-top: 1rem;
+}
+
+.my-btn {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
 }
 
 .secondary-btn:hover {
@@ -199,7 +205,8 @@ select::-ms-expand {
     background: #5c6664;
     overflow: hidden;
     border-radius: .25em;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .select::after {

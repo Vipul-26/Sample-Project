@@ -27,7 +27,6 @@ const Home = () => {
         members: {
             memberList: Member[],
             activeList: string[],
-            statusData: string,
             userList: User[],
             newsList: NewsData,
             channelName: string;
@@ -129,8 +128,7 @@ const Home = () => {
             </div>
             {companyList.length > 0 &&
                 <div className='dropdown'>
-                    <Dropdown title='Company' mapData={Array.from(new Set(companyList))} isStat={false} />
-                    <Dropdown title='Status' mapData={['Active', 'Closed']} isStat={true} />
+                    <Dropdown title='Company' mapData={Array.from(new Set(companyList))} />
                 </div>
             }
             <Table />
@@ -207,7 +205,7 @@ const Home = () => {
                 </select>
             </div>
             {isNewsOpen &&
-                <button onClick={handleBtnClick} className='secondary-btn'>
+                <button onClick={handleBtnClick} className='secondary-btn my-btn'>
                     Get News
                 </button>
             }

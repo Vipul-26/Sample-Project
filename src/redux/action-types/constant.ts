@@ -6,8 +6,6 @@ export const UPDATE_MEMBER = 'UPDATE_MEMBER';
 
 export const ADD_ACTIVE_LIST = 'ADD_ACTIVE_LIST';
 
-export const ADD_STATUS_DATA = 'ADD_STATUS_DATA';
-
 export const ADD_USER = 'ADD_USER';
 
 export const GET_NEWS = 'GET_NEWS';

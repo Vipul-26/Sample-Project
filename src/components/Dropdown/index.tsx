@@ -1,20 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { addActiveList, addStatusData } from "../../redux/actions";
+import { addActiveList } from "../../redux/actions";
 import "./style.css";
 
 interface DropdownProps {
     title: string;
     mapData: string[];
-    isStat: boolean;
 }
 
 interface Members {
     members: {
         memberList: Member[],
         activeList: string[],
-        statusData: string,
         userList: User[],
         newsList: NewsData,
         channelName: string;
@@ -63,7 +61,7 @@ const Dropdown = (props: DropdownProps) => {
 
     const [isDropDown, setDropDown] = useState(false);
 
-    const { activeList, memberList, statusData } = useSelector((state: Members) => state.members);
+    const { activeList, memberList } = useSelector((state: Members) => state.members);
 
     const dispatch = useDispatch();
 
@@ -86,24 +84,20 @@ const Dropdown = (props: DropdownProps) => {
     }, [isDropDown]);
 
     const handleCheckBox = (filter: string) => {
-        if (props.isStat) {
-            dispatch(addStatusData(filter));
-        } else {
-            if (filter === "All") {
-                if (activeList.length === memberList.length) {
-                    dispatch(addActiveList([]));
-                } else {
-                    dispatch(addActiveList(memberList.map(filter => filter.company)));
-                }
+        if (filter === "All") {
+            if (activeList.length === memberList.length) {
+                dispatch(addActiveList([]));
             } else {
-                if (activeList.includes(filter)) {
-                    const filterIndex = activeList.indexOf(filter);
-                    const newFilter = [...activeList];
-                    newFilter.splice(filterIndex, 1);
-                    dispatch(addActiveList(newFilter));
-                } else {
-                    dispatch(addActiveList([...activeList, filter]))
-                }
+                dispatch(addActiveList(memberList.map(filter => filter.company)));
+            }
+        } else {
+            if (activeList.includes(filter)) {
+                const filterIndex = activeList.indexOf(filter);
+                const newFilter = [...activeList];
+                newFilter.splice(filterIndex, 1);
+                dispatch(addActiveList(newFilter));
+            } else {
+                dispatch(addActiveList([...activeList, filter]))
             }
         }
     }
@@ -111,40 +105,28 @@ const Dropdown = (props: DropdownProps) => {
     return (
         <div className="dropdown-check-list" ref={node}>
             <span className={`anchor ${isDropDown ? 'dropdown-check-list-active' : ''}`} onClick={() => setDropDown(!isDropDown)}>
-                {props.isStat ?
-                    props.title :
-                    `${props.title} (${activeList.length})`
-                }
+                {`${props.title} (${activeList.length})`}
             </span>
-            {isDropDown && !props.isStat &&
-                (
+            {isDropDown &&
+                <>
                     <ul className="items-first">
                         <li>
                             <input type="checkbox" onClick={() => handleCheckBox('All')} checked={activeList.length === memberList.length} />
                             Select all
                         </li>
-                    </ul>
-                )
-            }
-            {isDropDown &&
-                <ul className="items">
-                    {
-                        props.mapData.map((data: string, index) => {
+                    </ul><ul className="items">
+                        {props.mapData.map((data: string, index) => {
                             return (
                                 <li key={index}>
-                                    {props.isStat ?
-                                        <input type="checkbox" onClick={() => handleCheckBox(data)} checked={statusData === data} />
-                                        :
-                                        <input type="checkbox" onClick={() => handleCheckBox(data)} checked={activeList.includes(data)} />
-                                    }
+                                    <input type="checkbox" onClick={() => handleCheckBox(data)} checked={activeList.includes(data)} />
                                     {data}
                                 </li>
-                            )
-                        })
-                    }
-                </ul>
+                            );
+                        })}
+                    </ul>
+                </>
             }
-        </div>
+        </div >
     );
 };
 

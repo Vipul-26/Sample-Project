@@ -4,7 +4,6 @@ import {
     DELETE_MEMBER,
     UPDATE_MEMBER,
     ADD_ACTIVE_LIST,
-    ADD_STATUS_DATA,
     ADD_USER,
     GET_NEWS,
     SET_NEWS,
@@ -20,7 +19,6 @@ if (usersList && uList) {
 const initialState = {
     memberList: [],
     activeList: [],
-    statusData: '',
     userList: usersList,
     newsList: {},
     channelName: '',
@@ -83,12 +81,6 @@ export const memberReducer = (state = initialState, action: MemberAction) => {
             return {
                 ...state,
                 activeList: action.data
-            }
-        }
-        case ADD_STATUS_DATA: {
-            return {
-                ...state,
-                statusData: action.data
             }
         }
         case ADD_USER: {

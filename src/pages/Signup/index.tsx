@@ -9,7 +9,6 @@ const Signup = () => {
         members: {
             memberList: Member[],
             activeList: string[],
-            statusData: string,
             userList: User[],
             newsList: NewsData,
             channelName: string;

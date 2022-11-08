@@ -3,7 +3,6 @@ import {
     DELETE_MEMBER,
     UPDATE_MEMBER,
     ADD_ACTIVE_LIST,
-    ADD_STATUS_DATA,
     ADD_USER,
     GET_NEWS,
     SET_NEWS,
@@ -54,8 +53,6 @@ export const deleteMember = (key: number) => ({ type: DELETE_MEMBER, data: key }
 export const updateMember = () => ({ type: UPDATE_MEMBER });
 
 export const addActiveList = (data: string[]) => ({ type: ADD_ACTIVE_LIST, data });
-
-export const addStatusData = (data: string) => ({ type: ADD_STATUS_DATA, data });
 
 export const addUser = (data: User) => ({ type: ADD_USER, data });
 
